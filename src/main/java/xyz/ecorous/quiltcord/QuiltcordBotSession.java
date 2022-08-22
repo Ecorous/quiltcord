@@ -25,14 +25,15 @@ public class QuiltcordBotSession extends ListenerAdapter {
 		this.server = server;
 	}
 	public void init() throws LoginException {
+		/* SECTION: Needs to go, I just need a token variable*/
 		final QuiltcordConfig.BasicConfigs[] basic = new QuiltcordConfig.BasicConfigs[1];
 		config.registerCallback(c -> {
 			//token.set(config.basic.token);
 			basic[0] = config.basic;
-			assert basic[0] != null;
 			//System.out.println(config.basic.token);
 		});
 		System.out.println(basic[0].token);
+		/* SECTION-END */
 		JDA jda = JDABuilder.createDefault(basic[0].token).build();
 		jda.addEventListener(this);
 		QuiltcordBotSession.instance = this;
