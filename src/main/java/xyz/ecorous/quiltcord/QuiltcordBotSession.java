@@ -35,7 +35,7 @@ public class QuiltcordBotSession extends ListenerAdapter {
 	}
 
 	public void handleMinecraftMessage(String mcmessage) {
-		GuildChannel channel = jda.getGuildChannelById(config.basic.channelID);
+		/*GuildChannel channel = jda.getGuildChannelById(config.basic.channelID);
 		if (channel != null) {
 			if (channel.getType() == ChannelType.TEXT) {
 				MessageChannel channel1 = (MessageChannel) channel;
@@ -44,7 +44,7 @@ public class QuiltcordBotSession extends ListenerAdapter {
 			}
 		} else {
 			Quiltcord.LOGGER.error("Invalid channel ID! Please check the config or make sure the bot has access to this channel!");
-		}
+		}*/
 	}
 
 	@Override
