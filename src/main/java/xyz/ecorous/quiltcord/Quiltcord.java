@@ -23,21 +23,23 @@ public class Quiltcord implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Quiltcord");
 	public static final QuiltcordConfig CONFIG = QuiltConfig.create(MOD_ID, "config", QuiltcordConfig.class);
 
+	public static QuiltcordBotSession session;
+
 	@Override
 	public void onInitialize(ModContainer mod) {
 		//LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
-		final QuiltcordBotSession[] session = new QuiltcordBotSession[1];
+
 		ServerLifecycleEvents.READY.register(server -> {
 			try {
-				session[0] = new QuiltcordBotSession(server);
-				session[0].init();
+				session = new QuiltcordBotSession(server);
+				session.init();
 			} catch (LoginException e) {
 				LOGGER.error("Failed to initialize Quiltcord at stage LOGIN_SESSION", e);
 				LOGGER.error("Try checking your token in the config file, otherwise check your network connection");
 			}
 		});
 		ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
-			session[0].handleMinecraftMessage(message.method_44862().plain());
+			session.handleMinecraftMessage(message.method_44862().plain());
 		});
 
 

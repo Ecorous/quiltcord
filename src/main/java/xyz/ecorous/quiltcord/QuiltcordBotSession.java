@@ -25,15 +25,9 @@ public class QuiltcordBotSession extends ListenerAdapter {
 		this.server = server;
 	}
 	public void init() throws LoginException {
-		final QuiltcordConfig.BasicConfigs[] basic = new QuiltcordConfig.BasicConfigs[1];
-		config.registerCallback(c -> {
-			//token.set(config.basic.token);
-			basic[0] = config.basic;
-			assert basic[0] != null;
-			//System.out.println(config.basic.token);
-		});
-		System.out.println(basic[0].token);
-		JDA jda = JDABuilder.createDefault(basic[0].token).build();
+		String token = config.basic.token;
+		System.out.println("Token: \"" + token + "\"");
+		JDA jda = JDABuilder.createDefault(token).build();
 		jda.addEventListener(this);
 		QuiltcordBotSession.instance = this;
 		this.jda = jda;
@@ -41,13 +35,7 @@ public class QuiltcordBotSession extends ListenerAdapter {
 	}
 
 	public void handleMinecraftMessage(String mcmessage) {
-		final QuiltcordConfig.BasicConfigs[] basic = new QuiltcordConfig.BasicConfigs[1];
-		config.registerCallback(c -> {
-			//token.set(config.basic.token);
-			basic[0] = config.basic;
-			//System.out.println(config.basic.token);
-		});
-		GuildChannel channel = jda.getGuildChannelById(basic[0].channelID);
+		GuildChannel channel = jda.getGuildChannelById(config.basic.channelID);
 		if (channel != null) {
 			if (channel.getType() == ChannelType.TEXT) {
 				MessageChannel channel1 = (MessageChannel) channel;
