@@ -1,6 +1,6 @@
-# Quilt Template Mod
+# Quiltcord
 
-The official Quilt template Mod. You can use it as a template for your own mods!
+A discord link mod for the Quilt modloader.
 
 ## Usage
 

@@ -13,6 +13,11 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	mavenCentral()
+	maven {
+		name 'm2-dv8tion'
+		url 'https://m2.dv8tion.net/releases'
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -24,6 +29,27 @@ dependencies {
 		// officialMojangMappings() // Uncomment if you want to use Mojang mappings as your primary mappings, falling back on QM for parameters and Javadocs
 	}
 	modImplementation libs.quilt.loader
+
+	/* Start JDA stuff */
+	include "com.fasterxml.jackson.core:jackson-databind:2.13.1"
+	include "net.sf.trove4j:trove4j:3.0.3"
+	include "org.apache.commons:commons-collections4:4.1"
+	include "com.google.code.findbugs:jsr305:3.0.2"
+	include "org.jetbrains:annotations:16.0.1"
+	//include "org.slf4j:slf4j-api:1.7.25"
+	include "com.neovisionaries:nv-websocket-client:2.10"
+	include "com.squareup.okhttp3:okhttp:3.13.0"
+	//include "commons-logging:commons-logging:1.2"
+	//include "commons-codec:commons-codec:1.9"
+	include "com.fasterxml.jackson.core:jackson-annotations:2.13.1"
+	include "com.fasterxml.jackson.core:jackson-core:2.13.1"
+	include "com.squareup.okio:okio:1.17.2"
+	include "com.neovisionaries:nv-websocket-client:2.14"
+	include(modImplementation ("net.dv8tion:JDA:5.0.0-alpha.1") {
+		exclude module: 'opus-java'
+	})
+
+	/* End JDA stuff */
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
