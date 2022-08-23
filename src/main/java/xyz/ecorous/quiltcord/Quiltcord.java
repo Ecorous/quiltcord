@@ -39,7 +39,7 @@ public class Quiltcord implements ModInitializer {
 			}
 		});
 		ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
-			session.handleMinecraftMessage(message.method_44862().plain());
+			session.handleMinecraftMessage(message.method_44862().plain(), sender);
 		});
 
 

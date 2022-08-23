@@ -40,7 +40,7 @@ public final class QuiltcordConfig extends WrappedConfig {
 		@Comment("Image url for server messages.")
 		public final String serverImageUrl = "";
 
-		@Comment("Name for server messages. Default: \"Server\".")
+		@Comment("Name for server messages.")
 		public final String serverName = "Server";
 
 		@Comment("API to use to get minecraft head. Placeholders are {username} and {uuid}.")
